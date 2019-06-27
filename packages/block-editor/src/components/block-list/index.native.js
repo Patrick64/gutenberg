@@ -13,7 +13,7 @@ import { __ } from '@wordpress/i18n';
 import { withDispatch, withSelect } from '@wordpress/data';
 import { compose } from '@wordpress/compose';
 import { createBlock, isUnmodifiedDefaultBlock } from '@wordpress/blocks';
-import { HTMLTextInput, KeyboardAvoidingView, KeyboardAwareFlatList, ReadableContentView } from '@wordpress/components';
+import { KeyboardAvoidingView, KeyboardAwareFlatList, ReadableContentView } from '@wordpress/components';
 
 /**
  * Internal dependencies
@@ -71,7 +71,7 @@ export class BlockList extends Component {
 		} else {
 			const indexAfterSelected = this.props.selectedBlockOrder + 1;
 			const insertionIndex = indexAfterSelected || this.props.blockCount;
-			this.props.insertBlock( newBlock, insertionIndex );
+			this.props.insertBlock( newBlock, insertionIndex, this.props.rootClientId );
 		}
 	}
 
@@ -239,12 +239,6 @@ export class BlockList extends Component {
 				<Text style={ styles.labelStyleAddHere } >{ __( 'ADD BLOCK HERE' ) }</Text>
 				<View style={ styles.lineStyleAddHere }></View>
 			</View>
-		);
-	}
-
-	renderHTML() {
-		return (
-			<HTMLTextInput { ...this.props } parentHeight={ this.props.rootViewHeight } />
 		);
 	}
 }
