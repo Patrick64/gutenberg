@@ -11,7 +11,7 @@ Let's prepare a minimal plugin to make this work. Create a new folder and a file
  */
 
 function my_custom_format_script_register() {
-	wp_register_script(
+	wp_enqueue_script(
 		'my-custom-format-js',
 		plugins_url( 'my-custom-format.js', __FILE__ ),
 		array( 'wp-rich-text' )
